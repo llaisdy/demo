@@ -1,0 +1,38 @@
+* Elixir board game demo
+
+This little repo encapsulates a question I have implementing a simple board game in elixir.
+
+Most of the code is generated boilerplate.  The code of interest is in:
+
+- ~lib/demo_web/live/game_live.ex~
+- ~assets/js/app.js~
+
+My question is: how can I activate and disactivate drop sites dynamically?
+
+The board is a 3x3 grid (currently using a ~table~ to simplify css but will move to ~div~s).  There is a red piece and a green piece.  Pieces take turns to move and it is red to move.  A piece should be able to move one square in any direction (including diagonally).
+
+I am using hooks for the javascript interop, with a ~drop~ hook labelling ~td~s that can be drop sites, eg
+
+#+begin_src html
+  <td id="cell-3-1" phx-hook="Drop">
+#+end_src
+
+If I add the hook to every ~td~ statically, everything works, but pieces can move anywhere on the board.
+
+The current implementation (in ~DemoWeb.GameLive.board_cell/1~) gives a ~td~ the hook /only/ if that cell is a valid drop site -- and this changes move by move depending on which piece is to move and where that piece is.
+
+However, this doesn't work.  The DOM is updated -- using the browser html inspector I can see the right cells have the ~phx-hook~ attribute -- but the javascript is not called for the new cells.  The three cells that have the phx-hook on page load are the drop sites, and that never changes.
+
+I have read (eg [[https://github.com/phoenixframework/phoenix_live_view/issues/2563#issuecomment-1546218989][here]] & following comments) that elements added to the DOM should be mounted, hence I thought this would work.
+
+- what have I missed?
+- what is the right way to do this?
+
+** setup & run
+
+To start your Phoenix server:
+
+- Run ~mix setup~ to install and setup dependencies
+- Start Phoenix endpoint with ~mix phx.server~, or inside IEx with ~iex -S mix phx.server~ (or the run equivalent scripts in ~shortcuts/~).
+
+Now you can visit [[http://localhost:4000][http://localhost:4000]] from your browser.

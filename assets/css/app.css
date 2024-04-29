@@ -1,0 +1,37 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+
+div.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+div.game-board table {
+    border: solid 4px gray;
+    width: 100%;
+}
+
+div.game-board table td {
+    border: solid 2px gray;
+    width: 7em;
+    height: 7em;
+}
+
+div.piece {
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    margin: auto;
+}
+
+div.piece#piece-red {
+    background-color: red;
+}
+div.piece#piece-green {
+    background-color: green;
+}
