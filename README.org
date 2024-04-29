@@ -4,14 +4,14 @@ This little repo encapsulates a question I have implementing a simple board game
 
 Most of the code is generated boilerplate.  The code of interest is in:
 
-- ~lib/demo_web/live/game_live.ex~
-- ~assets/js/app.js~
+- [[https://github.com/llaisdy/demo/blob/master/lib/demo_web/live/game_live.ex][lib/demo_web/live/game_live.ex]]
+- [[https://github.com/llaisdy/demo/blob/master/assets/js/app.js][assets/js/app.js]]
 
 My question is: how can I activate and disactivate drop sites dynamically?
 
-The board is a 3x3 grid (currently using a ~table~ to simplify css but will move to ~div~s).  There is a red piece and a green piece.  Pieces take turns to move and it is red to move.  A piece should be able to move one square in any direction (including diagonally).
+The board is a 3x3 grid (currently using a ~table~ to simplify css but will move to ~div~ soon).  There is a red piece and a green piece.  Pieces take turns to move and it is red to move.  A piece should be able to move one square in any direction (including diagonally).
 
-I am using hooks for the javascript interop, with a ~drop~ hook labelling ~td~s that can be drop sites, eg
+I am using hooks for the javascript interop, with a ~drop~ hook labelling each ~td~ that can be a drop site, eg
 
 #+begin_src html
   <td id="cell-3-1" phx-hook="Drop">
